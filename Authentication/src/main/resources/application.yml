@@ -1,5 +1,3 @@
 spring:
-  security:
-    user:
-      name: arun
-      password: arun
+  application:
+    name: Authentication and Authorization
