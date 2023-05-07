@@ -25,15 +25,8 @@ public class Login_SignIn_Controller {
     @Autowired
     private AuthenticationManager authenticationManager;
 
-    @RequestMapping("/home")
-    public String home(){
-        return "Home";
-    }
 
-    @RequestMapping("/home/products/{name}")
-    public String home_Products(@PathVariable("name") String name){
-        return "Product";
-    }
+
 
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody UserDto userDto){

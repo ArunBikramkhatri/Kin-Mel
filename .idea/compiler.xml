@@ -7,8 +7,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Authentication" />
         <module name="Service-registry" />
+        <module name="Transaction" />
+        <module name="Authentication" />
         <module name="Product-Service" />
       </profile>
     </annotationProcessing>
@@ -18,6 +19,7 @@
       <module name="Authentication" options="-parameters" />
       <module name="Product-Service" options="-parameters" />
       <module name="Service-registry" options="-parameters" />
+      <module name="Transaction" options="-parameters" />
     </option>
   </component>
 </project>
