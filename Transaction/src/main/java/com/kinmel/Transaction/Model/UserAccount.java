@@ -16,7 +16,7 @@ public class UserAccount {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id ;
     private String username ;
-    private String pin;
-    private String phone;
-    private String balance;
+    private int pin;
+    private int phone;
+    private int balance;
 }
