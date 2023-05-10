@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @Data
 public class UserAcccountDto {
 
-    private int phone;
-    private int pin;
-    private int price;
+    private String phone;
+    private String pin;
+    private String price;
 
 }

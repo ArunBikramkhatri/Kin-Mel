@@ -21,7 +21,7 @@ public class PaymentController {
     public ResponseEntity<String> payment_process(@RequestBody UserAcccountDto user) throws Exception {
 
         UserAccount userAccount = transactionService.findUserByPhone(String.valueOf(user.getPhone()));
-
+        System.out.println(userAccount);
         if(userAccount != null){
             if(transactionService.checkPin(user , userAccount)){
 

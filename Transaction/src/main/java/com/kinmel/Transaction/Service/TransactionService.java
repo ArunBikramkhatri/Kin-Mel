@@ -22,15 +22,15 @@ public class TransactionService {
 
     public UserAccount findUserByPhone(String phone)throws Exception {
 
-        UserAccount user = transactionRepo.findByPhone(Integer.parseInt(phone));
+        UserAccount user = transactionRepo.findByPhone(Long.parseLong(phone));
         if(user == null){
             return null;
         }
         return user;
     }
 
-    public boolean checkPin(UserAcccountDto user, UserAccount userAccount) {
-        if(user.getPin() == (userAccount.getPin())){
+    public boolean checkPin(UserAcccountDto userDto, UserAccount userAccount) {
+        if(Integer.parseInt(userDto.getPin()) == (userAccount.getPin())){
             return true;
         }
         else
@@ -38,12 +38,12 @@ public class TransactionService {
     }
 
     @Transactional
-    public String transaction_process(UserAcccountDto user, UserAccount userAccount) {
-       if(user.getPrice() >  userAccount.getBalance() ){
+    public String transaction_process(UserAcccountDto userDto, UserAccount userAccount) {
+       if(Integer.parseInt(userDto.getPrice()) >  userAccount.getBalance() ){
             return "Insuffiecent Balance";
        }else {
 
-           String new_amount = String.valueOf((userAccount.getBalance()) - (user.getPrice()));
+           int new_amount = (userAccount.getBalance()) - (Integer.parseInt(userDto.getPrice()));
             transactionRepo.updateAmount(userAccount.getPhone() , new_amount);
             return "Transaction success";
        }

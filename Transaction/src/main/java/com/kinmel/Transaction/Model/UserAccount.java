@@ -17,6 +17,6 @@ public class UserAccount {
     private String id ;
     private String username ;
     private int pin;
-    private int phone;
+    private Long phone;
     private int balance;
 }
