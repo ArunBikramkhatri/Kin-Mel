@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/kin-mel")
+@RequestMapping("/kin-mel/product-service")
 public class ProductController {
 
     @Autowired
