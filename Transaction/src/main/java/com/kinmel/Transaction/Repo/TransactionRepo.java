@@ -18,4 +18,6 @@ public interface TransactionRepo extends JpaRepository<UserAccount , String> {
     void updateAmount(Long phone ,@Param("amount") int amount);
 
 
+    @Query("select u from UserAccount  u where u.phone=:phone")
+    UserAccount getUserByPhone(@Param("phone") Long phone);
 }

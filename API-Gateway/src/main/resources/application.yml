@@ -20,3 +20,4 @@ spring:
           predicates:
             - Path=/kin-mel/pay-service/pay
             - Method=POST
+

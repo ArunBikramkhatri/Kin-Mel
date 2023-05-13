@@ -4,11 +4,9 @@ import com.kinmel.Transaction.Dto.UserAcccountDto;
 import com.kinmel.Transaction.Model.UserAccount;
 import com.kinmel.Transaction.Service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/kin-mel/pay-service")
@@ -16,6 +14,14 @@ public class PaymentController {
 
     @Autowired
     private TransactionService transactionService;
+
+    @GetMapping("/getUser/{phone}")
+    public ResponseEntity<UserAccount> getAccountDetails(@Param("phone") String phone)
+    {
+        System.out.println(phone);
+        UserAccount userAccount =transactionService.getUser(phone);
+        return ResponseEntity.ok(userAccount);
+    }
 
     @PostMapping("/pay")
     public ResponseEntity<String> payment_process(@RequestBody UserAcccountDto user) throws Exception {

@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserService {
 
@@ -20,6 +22,7 @@ public class UserService {
     @Autowired
     private DTO_to_Entity dtoToEntity;
     public void saveUser(UserDto userDto){
+        System.out.println(userDto);
         UserInfo user = dtoToEntity.dto_to_entity(userDto);
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userRepo.save(user);
@@ -27,7 +30,10 @@ public class UserService {
 
     public UserDto findByEmail(String email){
         UserInfo user = userRepo.findByEMail(email);
-        UserDto userDto = dtoToEntity.entity_to_dto(user);
-        return userDto;
+        if(user == null){
+            return null;
+        }
+
+        return dtoToEntity.entity_to_dto(user);
     }
 }

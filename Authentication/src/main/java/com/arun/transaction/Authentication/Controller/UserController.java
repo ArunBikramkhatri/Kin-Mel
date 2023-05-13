@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.security.Principal;
 
 @RestController
-@RequestMapping("/daraz/user")
+@RequestMapping("/kin-mel/user")
 public class UserController {
 
     @Autowired

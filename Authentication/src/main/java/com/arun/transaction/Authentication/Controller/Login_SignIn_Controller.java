@@ -13,7 +13,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/daraz")
+@RequestMapping("/kin-mel")
 public class Login_SignIn_Controller {
 
     @Autowired
@@ -26,11 +26,19 @@ public class Login_SignIn_Controller {
     private AuthenticationManager authenticationManager;
 
 
+    @GetMapping("/home")
+    public ResponseEntity<String> getHome(){
+        return ResponseEntity.ok("Welcome to Kin-mel");
+    }
 
 
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody UserDto userDto){
 
+        if(userService.findByEmail(userDto.getEmail()) !=null){
+
+            return ResponseEntity.ok("Email Already exist");
+        }
 
         userService.saveUser(userDto);
         System.out.println("success");
@@ -38,9 +46,9 @@ public class Login_SignIn_Controller {
     }
 
 
-    @PostMapping("/authenticate")
+    @PostMapping("/authenticate_user")
     public String authenticate(@RequestBody AuthRequest authRequest) throws Exception{
-
+        System.out.println(authRequest);
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getEmail(),authRequest.getPassword()));
         if(authentication.isAuthenticated()) {
             return jwtService.generateToken(authRequest.getEmail());

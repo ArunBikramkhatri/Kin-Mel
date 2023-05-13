@@ -51,4 +51,9 @@ public class TransactionService {
     }
 
 
+    public UserAccount getUser(String phone) {
+        Long phone_no = Long.parseLong(phone);
+        UserAccount userAccount = transactionRepo.getUserByPhone(phone_no);
+        return userAccount;
+    }
 }
